@@ -40,21 +40,40 @@ const HeroesList = () => {
         // eslint-disable-next-line
     }, [request]);
 
+    if (heroesLoadingStatus === "loading") {
+        return <Spinner/>;
+    } else if (heroesLoadingStatus === "error") {
+        return <h5 className="text-center mt-5">Ошибка загрузки</h5>
+    }
+
     const renderHeroesList = (arr) => {
         if (arr.length === 0) {
-            return <h5 className="text-center mt-5">Героев пока нет</h5>
+            return (
+                <CSSTransition
+                    timeout={0}
+                    classNames="hero">
+                    <h5 className="text-center mt-5">Героев пока нет</h5>
+                </CSSTransition>
+            )
         }
 
         return arr.map(({id, ...props}) => {
-            return <HeroesListItem key={id} onDelete={() => onDelete(id)} {...props}/>
+            return (
+                <CSSTransition
+                    key={id}
+                    timeout={500}
+                    classNames="hero">
+                    <HeroesListItem  {...props} onDelete={() => onDelete(id)}/>
+                </CSSTransition>
+            )
         })
     }
 
-    const elements = renderHeroesList(heroes);
+    const elements = renderHeroesList(filteredHeroes);
     return (
-        <ul>
+        <TransitionGroup component="ul">
             {elements}
-        </ul>
+        </TransitionGroup>
     )
 }
 
