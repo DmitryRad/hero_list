@@ -27,9 +27,9 @@ export const useHttp = () => {
         // setProcess('loading');
     // }, []);
 
-    return {request,
-            // clearError,
-            // process,
+    return {request, 
+            // clearError, 
+            // process, 
             // setProcess
         }
 }

@@ -22,10 +22,12 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 heroesLoadingStatus: 'error'
             }
-        case 'HERO_DELETE' :
+        case 'HERO_DELETED':
+            // при клике на крестик формируется новый маассив
+            const newHeroList = state.heroes.filter(item => item.id !== action.payload);
             return {
                 ...state,
-                heroes: action.payload
+                heroes: newHeroList
             }
         default: return state
     }
