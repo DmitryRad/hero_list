@@ -1,7 +1,7 @@
 const initialState = {
     heroes: [],
     heroesLoadingStatus: 'idle',
-    filters: []
+    filters: [],
     filterLoadingStatus: 'idle',
     activeFilter: 'all',
     filteredHeroes: []
@@ -71,7 +71,7 @@ const reducer = (state = initialState, action) => {
                 // фильтрованные герои, которых мы отображаем на странице
                 filteredHeroes: state.activeFilter === 'all' ?
                                 newHeroList :
-                                newHeroList.filter(item => item.element ===)
+                                newHeroList.filter(item => item.element === state.activeFilter)
             }
         default: return state
     }
