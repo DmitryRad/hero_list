@@ -2,7 +2,7 @@ const initialState = {
     heroes: [],
     heroesLoadingStatus: 'idle',
     filters: [],
-    filterLoadingStatus: 'idle',
+    filtersLoadingStatus: 'idle',
     activeFilter: 'all',
     filteredHeroes: []
 }
@@ -18,9 +18,10 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 heroes: action.payload,
+                // на странице сразу будут отображены нужные герои
                 filteredHeroes: state.activeFilter === 'all' ?
-                    action.payload :
-                    action.payload.filter(item => item.element === state.activeFilter),
+                                action.payload :
+                                action.payload.filter(item => item.element === state.activeFilter),
                 heroesLoadingStatus: 'idle'
             }
         case 'HEROES_FETCHING_ERROR':
@@ -31,17 +32,18 @@ const reducer = (state = initialState, action) => {
         case 'FILTERS_FETCHING':
             return {
                 ...state,
-                filterLoadingStatus: 'loading'
+                filtersLoadingStatus: 'loading'
             }
         case 'FILTERS_FETCHED':
             return {
                 ...state,
-                filterLoadingStatus: 'idle'
+                filters: action.payload,
+                filtersLoadingStatus: 'idle'
             }
         case 'FILTERS_FETCHING_ERROR':
             return {
                 ...state,
-                heroesLoadingStatus: 'error'
+                filtersLoadingStatus: 'error'
             }
         case 'ACTIVE_FILTER_CHANGED':
             return {
@@ -57,8 +59,8 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 heroes: newCreatedHeroList,
                 filteredHeroes: state.activeFilter === 'all' ?
-                    newCreatedHeroList :
-                    newCreatedHeroList.filter(item => item.element === state.activeFilter)
+                                newCreatedHeroList :
+                                newCreatedHeroList.filter(item => item.element === state.activeFilter)
             }
         case 'HERO_DELETED':
             // при клике на крестик формируется новый маассив

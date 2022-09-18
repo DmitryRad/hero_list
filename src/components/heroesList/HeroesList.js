@@ -1,4 +1,4 @@
-import {useHttp} from '../../hooks/http.hook';
+import { useHttp } from '../../hooks/http.hook';
 import { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
@@ -8,6 +8,7 @@ import HeroesListItem from "../heroesListItem/HeroesListItem";
 import Spinner from '../spinner/Spinner';
 
 import './heroesList.scss';
+
 // Задача для этого компонента:
 // При клике на "крестик" идет удаление персонажа из общего состояния
 // Усложненная задача:
@@ -16,7 +17,7 @@ import './heroesList.scss';
 const HeroesList = () => {
     const { filteredHeroes, heroesLoadingStatus } = useSelector(state => state);
     const dispatch = useDispatch();
-    const {request} = useHttp();
+    const { request } = useHttp();
 
     useEffect(() => {
         dispatch(heroesFetching());
@@ -29,16 +30,17 @@ const HeroesList = () => {
 
 
     // Функция удаления персонажа из store по его id
+    // оборачиваем в useCallback, т.к. эта функция передается вниз по иерархии как проперти дочернего компонента
+    // чтобы каждый раз не вызывать перереднеринг дочерних компонентов
     const onDelete = useCallback((id) => {
-        //по запросу берем id героя, который приходит в функцию в качестве аргумента
-        //метод DELETE - чтобы удалить персонажа
+        // по запросу берем id героя, который приходит в функцию в качестве аргумента
+        // метод DELETE - чтобы удалить персонажа
         request('http://localhost:3001/heroes/${id}', "DELETE")
-            //выводим в консоль данные того персонажа, который был удален
-            //убеждась, что запрос пошел успешно
+            // выводим в консоль данные того персонажа, который был удален
+            // убеждаюсь, что запрос прошел успешно
             .then(data => console.log(data, 'Deleted'))
-            //только когда запрос прошел успешно - диспетчим новое действие
-            //а именно удаление персонажа
-            //
+            // только когда запрос прошел успешно - диспетчим новое действие
+            // а именно удаление персонажа
             .then(dispatch(heroDeleted(id)))
             .catch(err => console.log(err));
         // eslint-disable-next-line

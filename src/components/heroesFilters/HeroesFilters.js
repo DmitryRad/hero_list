@@ -1,4 +1,4 @@
-import {useHttp} from '../../hooks/http.hook';
+import { useHttp } from '../../hooks/http.hook';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames';
@@ -13,9 +13,9 @@ import Spinner from '../spinner/Spinner';
 
 const HeroesFilters = () => {
 
-    const {filters, filtersLoadingStatus, activeFilter} = useSelector(state => state);
+    const { filters, filtersLoadingStatus, activeFilter } = useSelector(state => state);
     const dispatch = useDispatch();
-    const {request} = useHttp();
+    const { request } = useHttp();
 
     // Запрос на сервер для получения фильтров и последовательной смены состояния
     useEffect(() => {
@@ -45,7 +45,7 @@ const HeroesFilters = () => {
             const btnClass = classNames('btn', className, {
                 'active': name === activeFilter
             });
-
+            // на базе фильтров формируем кусочек верстки - кнопки
             return <button
                 key={name}
                 id={name}
