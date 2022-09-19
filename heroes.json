@@ -23,6 +23,12 @@
       "name": "Червь",
       "description": "ползать в земле",
       "element": "earth"
+    },
+    {
+      "id": "899f75e6-4301-413d-ba32-7c6c6406e86b",
+      "name": "hero5",
+      "description": "i can do",
+      "element": "earth"
     }
   ],
   "filters": [
