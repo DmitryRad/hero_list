@@ -27,6 +27,7 @@ const filters = (state = initialState, action) => {
                 ...state,
                 activeFilter: action.payload
             }
+        default: return state
     }
 }
 

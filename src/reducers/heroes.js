@@ -1,6 +1,6 @@
 const initialState = {
     heroes: [],
-    heroesLoadingStatus: 'idle',
+    heroesLoadingStatus: 'idle'
 }
 
 const heroes = (state = initialState, action) => {
@@ -29,7 +29,6 @@ const heroes = (state = initialState, action) => {
         case 'HERO_DELETED':
             return {
                 ...state,
-                // помещаем новый массив в героев, т.к. оттуда был удален элемент
                 heroes: state.heroes.filter(item => item.id !== action.payload)
             }
         default: return state
