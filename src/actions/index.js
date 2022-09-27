@@ -73,16 +73,20 @@ export const activeFilterChanged = (filter) => {
 //     }, 1000)
 // }
 
-export const heroCreated = (hero) => {
-    return {
-        type: 'HERO_CREATED',
-        payload: hero
-    }
-}
+// export const heroCreated = (hero) => {
+//     return {
+//         type: 'HERO_CREATED',
+//         payload: hero
+//     }
+// }
 
-export const heroDeleted = (id) => {
-    return {
-        type: 'HERO_DELETED',
-        payload: id
-    }
-}
+export const heroCreated = createAction('HERO_CREATED');
+
+// export const heroDeleted = (id) => {
+//     return {
+//         type: 'HERO_DELETED',
+//         payload: id
+//     }
+// }
+
+export const heroDeleted = createAction('HERO_DELETED');
