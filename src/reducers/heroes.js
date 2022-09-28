@@ -3,9 +3,7 @@ import { createReducer } from "@reduxjs/toolkit";
 import {
     heroesFetching,
     heroesFetched,
-    heroesFetchingError,
-    heroCreated,
-    heroDeleted
+    heroesFetchingError
 } from "../actions";
 
 const initialState = {

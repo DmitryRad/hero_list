@@ -7,16 +7,22 @@
       "element": "fire"
     },
     {
-      "id": 2,
-      "name": "Неизвестный герой",
-      "description": "Скрывающийся в тени",
+      "id": "4c38a460-03e6-4ac9-9a77-025d31d00c78",
+      "name": "Второй герой",
+      "description": "Лучший в воде",
+      "element": "water"
+    },
+    {
+      "id": "6e3629b7-4f62-4229-af39-f4e0b402cc07",
+      "name": "Третий герой",
+      "description": "Быстрее скорости ветра!",
       "element": "wind"
     },
     {
-      "id": 3,
-      "name": "Морской герой",
-      "description": "Как аквамен, но не из DC",
-      "element": "water"
+      "id": "39ed294d-91bb-46d4-b220-d84d338c5d3a",
+      "name": "Дмитрий Радченко",
+      "description": "6546",
+      "element": "earth"
     }
   ],
   "filters": [
