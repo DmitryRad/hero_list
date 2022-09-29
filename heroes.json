@@ -17,12 +17,6 @@
       "name": "Третий герой",
       "description": "Быстрее скорости ветра!",
       "element": "wind"
-    },
-    {
-      "id": "39ed294d-91bb-46d4-b220-d84d338c5d3a",
-      "name": "Дмитрий Радченко",
-      "description": "6546",
-      "element": "earth"
     }
   ],
   "filters": [
