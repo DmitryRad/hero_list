@@ -8,12 +8,6 @@ const initialState = filtersAdapter.getInitialState({
     activeFilter: 'all'
 });
 
-// const initialState = {
-//     filters: [],
-//     filtersLoadingStatus: 'idle',
-//     activeFilter: 'all'
-// }
-
 export const fetchFilters = createAsyncThunk(
     'filters/fetchFilters',
     async () => {
