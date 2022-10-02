@@ -5,17 +5,18 @@ import { v4 as uuidv4 } from 'uuid';
 import store from '../../store';
 
 import { selectAll } from '../heroesFilters/heroesFltersSlice';
-import { heroCreated } from '../heroesList/heroesSlice';
+import { useCreateHeroMutation } from "../../api/apiSlice";
 
 const HeroesAddForm = () => {
     const [heroName, setHeroName] = useState('');
     const [heroDescr, setHeroDescr] = useState('');
     const [heroElement, setHeroElement] = useState('');
 
+    const [createHero] = useCreateHeroMutation();
+
     const {filtersLoadingStatus} = useSelector(state => state.filters);
     const filters = selectAll(store.getState());
-    const dispatch = useDispatch();
-    const {request} = useHttp();
+
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
@@ -26,10 +27,12 @@ const HeroesAddForm = () => {
             element: heroElement
         }
 
-        request("http://localhost:3001/heroes", "POST", JSON.stringify(newHero))
-            .then(res => console.log(res, 'Отправка успешна'))
-            .then(dispatch(heroCreated(newHero)))
-            .catch(err => console.log(err));
+        // request("http://localhost:3001/heroes", "POST", JSON.stringify(newHero))
+        //     .then(res => console.log(res, 'Отправка успешна'))
+        //     .then(dispatch(heroCreated(newHero)))
+        //     .catch(err => console.log(err));
+
+        createHero(newHero).unwrap();
 
         setHeroName('');
         setHeroDescr('');
